@@ -13,4 +13,5 @@ DEFAULT_COLORS = {
     "away-secondary": "#0d084a",
     "dark": "#000000",
     "light": "#ffffff",
+    "gold": "#dbcf30",
 }

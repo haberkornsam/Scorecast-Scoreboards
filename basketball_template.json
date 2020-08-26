@@ -71,32 +71,32 @@
           }
         },
         "actions": [
-            {
-              "action": "add",
-              "value": 1,
-              "label": "+1",
-              "width": 22,
-              "height": 25,
-              "background": "#ffffff",
-              "position": {
-                "x": 61,
-                "y": 237,
-                "anchor": "c"
-              }
-            },
-            {
-              "action": "add",
-              "value": 2,
-              "label": "+2",
-              "width": 22,
-              "height": 25,
-              "background": "#ffffff",
-              "position": {
-                "x": 86,
-                "y": 237,
-                "anchor": "c"
-              }
-            },
+          {
+            "action": "add",
+            "value": 1,
+            "label": "+1",
+            "width": 22,
+            "height": 25,
+            "background": "#ffffff",
+            "position": {
+              "x": 61,
+              "y": 237,
+              "anchor": "c"
+            }
+          },
+          {
+            "action": "add",
+            "value": 2,
+            "label": "+2",
+            "width": 22,
+            "height": 25,
+            "background": "#ffffff",
+            "position": {
+              "x": 86,
+              "y": 237,
+              "anchor": "c"
+            }
+          },
           {
             "action": "add",
             "value": 3,
@@ -111,18 +111,18 @@
             }
           },
           {
-              "action": "add",
-              "value": -1,
-              "label": "-1",
-              "width": 22,
-              "height": 25,
-              "background": "#ffffff",
-              "position": {
-                "x": 136,
-                "y": 237,
-                "anchor": "c"
-              }
+            "action": "add",
+            "value": -1,
+            "label": "-1",
+            "width": 22,
+            "height": 25,
+            "background": "#ffffff",
+            "position": {
+              "x": 136,
+              "y": 237,
+              "anchor": "c"
             }
+          }
         ]
       },
       "overlay": {
@@ -160,19 +160,19 @@
           }
         },
         "actions": [
-            {
-              "action": "toggle",
-              "width": 100,
-              "height": 25,
-              "label": "Start",
-              "background": "#ffffff",
-              "position": {
-                "x": 150,
-                "y": 237,
-                "anchor": "c"
-              }
+          {
+            "action": "toggle",
+            "width": 100,
+            "height": 25,
+            "label": "Start",
+            "background": "#ffffff",
+            "position": {
+              "x": 150,
+              "y": 237,
+              "anchor": "c"
             }
-          ]
+          }
+        ]
       },
       "overlay": {
         "display": {
@@ -190,6 +190,112 @@
           }
         }
       }
+    },
+    {
+      "name": "possession",
+      "type": "enumeration",
+      "enums": [
+        {
+          "default": "inactive",
+          "name": "home-poss",
+          "control": {
+            "display": {
+              "width": 50,
+              "height": 50,
+              "background": "#ffffff",
+              "label": "POSS\n",
+              "font": {
+                "family": "times",
+                "size": 20,
+                "bold": true
+              },
+              "position": {
+                "x": 400,
+                "y": 200,
+                "anchor": "c"
+              }
+            }
+          },
+          "overlay": {
+            "display": {
+              "width": 25,
+              "height": 5,
+              "background": "",
+              "position": {
+                "x": 600,
+                "y": 48,
+                "anchor": "nw"
+              }
+            }
+          },
+          "active": {
+            "control": {
+              "label": "POSS\n-->"
+            },
+            "overlay": {
+              "background": "gold"
+            }
+          },
+          "inactive": {
+            "control": {
+              "label": "POSS\n"
+            },
+            "overlay": {
+              "background": ""
+            }
+          }
+        },
+        {
+          "default": "inactive",
+          "name": "away-poss",
+          "control": {
+            "display": {
+              "width": 50,
+              "height": 50,
+              "background": "#ffffff",
+              "label": "POSS\n",
+              "font": {
+                "family": "times",
+                "size": 20,
+                "bold": true
+              },
+              "position": {
+                "x": 455,
+                "y": 200,
+                "anchor": "c"
+              }
+            }
+          },
+          "overlay": {
+            "display": {
+              "width": 25,
+              "height": 5,
+              "background": "",
+              "position": {
+                "x": 670,
+                "y": 48,
+                "anchor": "nw"
+              }
+            }
+          },
+          "active": {
+            "control": {
+              "label": "POSS\n<--"
+            },
+            "overlay": {
+              "background": "gold"
+            }
+          },
+          "inactive": {
+            "control": {
+              "label": "POSS\n"
+            },
+            "overlay": {
+              "background": ""
+            }
+          }
+        }
+      ]
     }
   ]
 }
