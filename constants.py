@@ -15,3 +15,12 @@ DEFAULT_COLORS = {
     "light": "#ffffff",
     "gold": "#dbcf30",
 }
+
+BACKGROUND_ARG_MAP = {
+    "background": "fill"
+}
+
+FOREGROUND_ARG_MAP = {
+    "label": "text",
+    "foreground": "fill"
+}

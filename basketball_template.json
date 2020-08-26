@@ -196,7 +196,7 @@
       "type": "enumeration",
       "enums": [
         {
-          "default": "inactive",
+          "default-active": false,
           "name": "home-poss",
           "control": {
             "display": {
@@ -246,7 +246,7 @@
           }
         },
         {
-          "default": "inactive",
+          "default-active": false,
           "name": "away-poss",
           "control": {
             "display": {
