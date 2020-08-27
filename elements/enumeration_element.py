@@ -1,6 +1,6 @@
 import tkinter
 
-import parser
+import parse
 from constants import BACKGROUND_ARG_MAP, FOREGROUND_ARG_MAP
 from elements import element
 
@@ -63,18 +63,18 @@ class _Enum(element.Element):
     def render_element(self, data: dict, canvas: tkinter.Canvas) -> (str, str):
         if data is None:
             return
-        width, height = parser.parse_geometry(data)
+        width, height = parse.parse_geometry(data)
         background = canvas.create_rectangle(
             self.create_bbox(data.get("position"), width, height),
-            fill=parser.parse_background(data),
+            fill=parse.parse_background(data),
             width=0
         )
         foreground = canvas.create_text(
-            parser.parse_coordinates(data["position"], offset=True),
-            anchor=parser.parse_anchor(data["position"]),
-            text=parser.get_label(data),
-            fill=parser.parse_foreground(data),
-            font=parser.parse_font(data)
+            parse.parse_coordinates(data["position"], offset=True),
+            anchor=parse.parse_anchor(data["position"]),
+            text=parse.get_label(data),
+            fill=parse.parse_foreground(data),
+            font=parse.parse_font(data)
         )
 
         return background, foreground

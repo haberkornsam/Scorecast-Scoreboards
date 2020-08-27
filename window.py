@@ -1,6 +1,6 @@
 import tkinter
 
-import parser
+import parse
 
 
 
@@ -46,6 +46,6 @@ class Window(tkinter.Tk):
         self.canvas.config(bg=self.background_color)
 
     def read_config(self, data: dict) -> None:
-        self.set_geometry(parser.parse_geometry(data))
-        self.set_title(parser.parse_title(data))
-        self.set_background_color(parser.parse_background(data))
+        self.set_geometry(parse.parse_geometry(data))
+        self.set_title(parse.parse_title(data))
+        self.set_background_color(parse.parse_background(data))
