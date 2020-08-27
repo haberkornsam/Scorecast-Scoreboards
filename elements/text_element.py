@@ -1,7 +1,7 @@
 import tkinter
 
 from elements import element
-import parser
+import parse
 
 
 class TextElement(element.Element):
@@ -26,18 +26,18 @@ class TextElement(element.Element):
     def render_element(self, data: dict, canvas: tkinter.Canvas) -> (str, str):
         if data is None:
             return
-        width, height = parser.parse_geometry(data)
+        width, height = parse.parse_geometry(data)
         background = canvas.create_rectangle(
             self.create_bbox(data.get("position"), width, height),
-            fill=parser.parse_background(data),
+            fill=parse.parse_background(data),
             width=0
         )
         foreground = canvas.create_text(
-            parser.parse_coordinates(data["position"], offset=True),
-            anchor=parser.parse_anchor(data["position"]),
-            text= parser.get_label(data) or self.get_text(),
-            fill= parser.parse_foreground(data),
-            font=parser.parse_font(data)
+            parse.parse_coordinates(data["position"], offset=True),
+            anchor=parse.parse_anchor(data["position"]),
+            text=parse.get_label(data) or self.get_text(),
+            fill= parse.parse_foreground(data),
+            font=parse.parse_font(data)
         )
 
         return background, foreground
@@ -93,10 +93,10 @@ class TextElement(element.Element):
         box.insert(0, self.get_text())
         box.config(justify="center")
         box.bind("<Return>", self.hide_edit_box)
-        width, height = parser.parse_geometry(self.control_data["display"])
+        width, height = parse.parse_geometry(self.control_data["display"])
         self.window = self.control_canvas.create_window(
-            parser.parse_coordinates(self.control_data["display"]["position"]),
-            anchor=parser.parse_anchor(self.control_data["display"]["position"]),
+            parse.parse_coordinates(self.control_data["display"]["position"]),
+            anchor=parse.parse_anchor(self.control_data["display"]["position"]),
             width=width,
             height=height,
             window=box)
