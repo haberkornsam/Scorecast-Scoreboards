@@ -1,7 +1,7 @@
 import tkinter
 from typing import Union
 
-import parser
+import parse
 
 
 class Element:
@@ -39,8 +39,8 @@ class Element:
         self.overlay_canvas.itemconfigure(self.overlay_element, **kwargs)
 
     def create_bbox(self, position_data: dict, width: int, height: int) -> (int, int, int, int):
-        x, y = parser.parse_coordinates(position_data)
-        anchor = parser.parse_anchor(position_data)
+        x, y = parse.parse_coordinates(position_data)
+        anchor = parse.parse_anchor(position_data)
 
         if anchor.count('w') == 1:
             x1 = x

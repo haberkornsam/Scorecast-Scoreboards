@@ -1,5 +1,5 @@
 from tkinter import *
-from parser import Parser
+from parse import Parser
 import attr
 
 class ControlParser(Parser):
