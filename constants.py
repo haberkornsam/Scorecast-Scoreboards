@@ -13,4 +13,14 @@ DEFAULT_COLORS = {
     "away-secondary": "#0d084a",
     "dark": "#000000",
     "light": "#ffffff",
+    "gold": "#dbcf30",
+}
+
+BACKGROUND_ARG_MAP = {
+    "background": "fill"
+}
+
+FOREGROUND_ARG_MAP = {
+    "label": "text",
+    "foreground": "fill"
 }

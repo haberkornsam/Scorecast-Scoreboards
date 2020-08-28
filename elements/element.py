@@ -16,7 +16,7 @@ class Element:
     control_element: str
     overlay_element: str
 
-    def __init__(self, control_canvas: object, overlay_canvas: object, data: object) -> object:
+    def __init__(self, control_canvas: tkinter.Canvas, overlay_canvas: tkinter.Canvas, data: dict):
         self.control_canvas = control_canvas
         self.overlay_canvas = overlay_canvas
 

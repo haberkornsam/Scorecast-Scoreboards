@@ -1,7 +1,7 @@
 import tkinter
 
-from elements import element
 import parse
+from elements import element
 
 
 class TextElement(element.Element):
@@ -36,7 +36,7 @@ class TextElement(element.Element):
             parse.parse_coordinates(data["position"], offset=True),
             anchor=parse.parse_anchor(data["position"]),
             text=parse.get_label(data) or self.get_text(),
-            fill= parse.parse_foreground(data),
+            fill=parse.parse_foreground(data),
             font=parse.parse_font(data)
         )
 

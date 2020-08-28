@@ -1,8 +1,8 @@
 import json
 
 import control_window
-from elements import number_element, text_element, clock_element
 import overlay_window
+from elements import number_element, text_element, clock_element, enumeration_element
 
 
 def main():
@@ -21,7 +21,8 @@ def main():
 ELEMENT_CONSTRUCTORS = {
     "text": text_element.TextElement,
     "number": number_element.NumberElement,
-    "clock": clock_element.ClockElement
+    "clock": clock_element.ClockElement,
+    "enumeration": enumeration_element.EnumerationElement
 }
 
 if __name__ == '__main__':
