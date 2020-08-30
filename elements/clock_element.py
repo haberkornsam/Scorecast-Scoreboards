@@ -1,7 +1,10 @@
-from elements import text_element
-import tkinter
 import time
 import re
+import tkinter
+
+from elements import text_element
+
+EXPIRED_BINDING = "<<expired>>"
 
 
 class ClockElement(text_element.TextElement):
@@ -29,7 +32,8 @@ class ClockElement(text_element.TextElement):
 
         self._timer = self.control_canvas.after(50, self._update)
         if self._starting_time - self._elapsed_time <= 0:
-            self.toggle_clock(self.toggle_foreground)
+            self.control_canvas.event_generate(EXPIRED_BINDING)
+            # self.toggle_clock(self.toggle_foreground)
 
     def _set_time(self, elapsed_time):
         """ Set the time string to Minutes:Seconds:Hundreths """
@@ -42,25 +46,12 @@ class ClockElement(text_element.TextElement):
             self._start = time.time() - self._elapsed_time
             self._update()
         else:
-            # TODO: Look into this more. When clicked before clock runs this throws error
-            self.control_canvas.after_cancel(self._timer)
-            self._elapsed_time = time.time() - self._start
+            if self._timer is not None:
+                self.control_canvas.after_cancel(self._timer)
+
+            self._elapsed_time = time.time() - self._start if self._timer is not None else 0.0
+
             self._set_time(self._elapsed_time)
-
-    def reset(self):
-        pass
-
-    def set_clock(self, minutes: int, seconds: int):
-        pass
-
-    def get_clock_time(self):
-        pass
-
-    def get_minutes(self):
-        pass
-
-    def get_seconds(self):
-        pass
 
     def text_var_listener(self, *args):
         long, short = format_time(self.text_var.get())
@@ -87,41 +78,46 @@ class ClockElement(text_element.TextElement):
         super(ClockElement, self).hide_edit_box(event, window, value=self._starting_time)
 
     def create_start_button(self, data: dict):
-        self.toggle_background, self.toggle_foreground = self.render_element(data, self.control_canvas)
-        self.control_canvas.tag_bind(self.toggle_background, "<Button-1>",
-                                     lambda e: self.toggle_clock(self.toggle_foreground))
-        self.control_canvas.tag_bind(self.toggle_foreground, "<Button-1>",
-                                     lambda e: self.toggle_clock(self.toggle_foreground))
+        background, foreground = self.render_element(data, self.control_canvas)
+        self.control_canvas.tag_bind(background, "<Button-1>",
+                                     lambda e: self.toggle_clock(foreground, background))
+        self.control_canvas.tag_bind(foreground, "<Button-1>",
+                                     lambda e: self.toggle_clock(foreground, background))
+        self.control_canvas.event_add(EXPIRED_BINDING, "None")
+        self.control_canvas.bind(EXPIRED_BINDING, lambda e: self.toggle_clock(foreground, background))
 
-    # TODO: Cleanup clock toggling when clock hits 0.0
-    def toggle_clock(self, foreground: str):
+    def toggle_clock(self, foreground: str, background: str):
         if self._starting_time - self._elapsed_time <= 0:
             self.control_canvas.itemconfigure(foreground, text="Reset")
             self._running.set(False)
-            self.control_canvas.tag_unbind(self.toggle_foreground, "<Button-1>")
-            self.control_canvas.tag_unbind(self.toggle_background, "<Button-1>")
+            self.control_canvas.tag_unbind(foreground, "<Button-1>")
+            self.control_canvas.tag_unbind(background, "<Button-1>")
+            self.control_canvas.unbind(EXPIRED_BINDING)
 
-            self.control_canvas.tag_bind(self.toggle_foreground, "<Button-1>", self.reset_clock)
-            self.control_canvas.tag_bind(self.toggle_background, "<Button-1>", self.reset_clock)
+            self.control_canvas.tag_bind(foreground, "<Button-1>",
+                                         lambda e: self.reset_clock(foreground, background))
+            self.control_canvas.tag_bind(background, "<Button-1>",
+                                         lambda e: self.reset_clock(foreground, background))
             return
 
         self._running.set(not self._running.get())
         self.control_canvas.itemconfigure(foreground, text="Stop" if self._running.get() else "Start")
 
-    def reset_clock(self, event):
+    def reset_clock(self, foreground: str, background: str):
         self._elapsed_time = 0.0
         self._starting_time = self.default
         self.text_var.set(self._starting_time)
 
-        self.control_canvas.tag_unbind(self.toggle_foreground, "<Button-1>")
-        self.control_canvas.tag_unbind(self.toggle_background, "<Button-1>")
+        self.control_canvas.tag_unbind(foreground, "<Button-1>")
+        self.control_canvas.tag_unbind(background, "<Button-1>")
 
-        self.control_canvas.tag_bind(self.toggle_background, "<Button-1>",
-                                     lambda e: self.toggle_clock(self.toggle_foreground))
-        self.control_canvas.tag_bind(self.toggle_foreground, "<Button-1>",
-                                     lambda e: self.toggle_clock(self.toggle_foreground))
+        self.control_canvas.tag_bind(background, "<Button-1>",
+                                     lambda e: self.toggle_clock(foreground, background))
+        self.control_canvas.tag_bind(foreground, "<Button-1>",
+                                     lambda e: self.toggle_clock(foreground, background))
+        self.control_canvas.bind(EXPIRED_BINDING, lambda e: self.toggle_clock(foreground, background))
 
-        self.control_canvas.itemconfigure(self.toggle_foreground, text="Stop" if self._running.get() else "Start")
+        self.control_canvas.itemconfigure(foreground, text="Stop" if self._running.get() else "Start")
 
 
 def format_time(time: float) -> (str, str):
