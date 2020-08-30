@@ -92,19 +92,19 @@ class TextElement(element.Element):
         box = tkinter.Entry()
         box.insert(0, self.get_text())
         box.config(justify="center")
-        box.bind("<Return>", self.hide_edit_box)
         width, height = parse.parse_geometry(self.control_data["display"])
-        self.window = self.control_canvas.create_window(
+        window = self.control_canvas.create_window(
             parse.parse_coordinates(self.control_data["display"]["position"]),
             anchor=parse.parse_anchor(self.control_data["display"]["position"]),
             width=width,
             height=height,
             window=box)
+        box.bind("<Return>", lambda e: self.hide_edit_box(e, window))
 
         self.hide_control()
 
-    def hide_edit_box(self, event):
-        self.control_canvas.itemconfigure(self.window, state="hidden")
-        self.text_var.set(event.widget.get())
+    def hide_edit_box(self, event, window: str, value=None):
+        self.control_canvas.itemconfigure(window, state="hidden")
+        self.text_var.set(event.widget.get() if not value else value)
         event.widget.destroy()
         self.show_control()

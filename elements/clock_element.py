@@ -1,6 +1,7 @@
 from elements import text_element
 import tkinter
 import time
+import re
 
 
 class ClockElement(text_element.TextElement):
@@ -71,10 +72,19 @@ class ClockElement(text_element.TextElement):
         self.text_var.set(round(self.text_var.get(), 1))
         super(ClockElement, self).show_edit_box(event)
 
-    def hide_edit_box(self, event):
-        self._starting_time = float(event.widget.get())
+    def hide_edit_box(self, event, window, value=None):
+        text = event.widget.get()
+        if re.fullmatch("^[0-9]*[.]?[0-9]*$", text):
+            self._starting_time = float(text)
+        elif re.fullmatch("^[0-9]*:[0-9]{2}([.][0-9]*$|$)", text):
+            temp = text.split(":")
+            print(temp)
+            self._starting_time = (float(temp[0])*60)+float(temp[1])
+            print(self._starting_time)
+        else:
+            return
         self._elapsed_time = 0.0
-        super(ClockElement, self).hide_edit_box(event)
+        super(ClockElement, self).hide_edit_box(event, window, value=self._starting_time)
 
     def create_start_button(self, data: dict):
         self.toggle_background, self.toggle_foreground = self.render_element(data, self.control_canvas)
