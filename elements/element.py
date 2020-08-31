@@ -20,8 +20,8 @@ class Element:
         self.control_canvas = control_canvas
         self.overlay_canvas = overlay_canvas
 
-        self.control_data = data.get("control")
-        self.overlay_data = data.get("overlay")
+        self.control_data = data.get("control", {})
+        self.overlay_data = data.get("overlay", {})
         self.name = data.get("name")
         self.type = data.get("type")
         self.default = data.get("default", None)

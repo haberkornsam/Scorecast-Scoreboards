@@ -179,7 +179,7 @@
             "label": "Start",
             "background": "#ffffff",
             "position": {
-              "x": 150,
+              "x": 190,
               "y": 237,
               "anchor": "c"
             }
@@ -304,6 +304,115 @@
             },
             "overlay": {
               "background": ""
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "home-timeouts",
+      "type": "number-bar",
+      "default": 5,
+      "control": {
+        "display": {
+          "width": 50,
+          "height": 50,
+          "background": "#ffffff",
+          "font": {
+            "family": "times",
+            "size": "20",
+            "bold": true
+          },
+          "position": {
+            "x": 100,
+            "y": 40,
+            "anchor": "c"
+          }
+        },
+        "actions": [
+          {
+            "action": "add",
+            "value": -1,
+            "label": "-1",
+            "width": 22,
+            "height": 25,
+            "background": "#ffffff",
+            "position": {
+              "x": 200,
+              "y": 40,
+              "anchor": "c"
+            }
+          }
+        ]
+      },
+      "bars": [
+        {
+          "overlay": {
+            "display": {
+              "width": 25,
+              "height": 5,
+              "background": "gold",
+              "position": {
+                "x": 10,
+                "y": 10,
+                "anchor": "nw"
+              }
+            }
+          }
+        },
+        {
+          "overlay": {
+            "display": {
+              "width": 25,
+              "height": 5,
+              "background": "gold",
+              "position": {
+                "x": 37,
+                "y": 10,
+                "anchor": "nw"
+              }
+            }
+          }
+        },
+        {
+          "overlay": {
+            "display": {
+              "width": 25,
+              "height": 5,
+              "background": "gold",
+              "position": {
+                "x": 64,
+                "y": 10,
+                "anchor": "nw"
+              }
+            }
+          }
+        },
+        {
+          "overlay": {
+            "display": {
+              "width": 25,
+              "height": 5,
+              "background": "gold",
+              "position": {
+                "x": 91,
+                "y": 10,
+                "anchor": "nw"
+              }
+            }
+          }
+        },
+        {
+          "overlay": {
+            "display": {
+              "width": 25,
+              "height": 5,
+              "background": "gold",
+              "position": {
+                "x": 118,
+                "y": 10,
+                "anchor": "nw"
+              }
             }
           }
         }
