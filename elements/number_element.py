@@ -1,5 +1,6 @@
-from elements import text_element
 import tkinter
+
+from elements import text_element
 
 
 class NumberElement(text_element.TextElement):
@@ -21,15 +22,25 @@ class NumberElement(text_element.TextElement):
         self.text_var = new_text_var
         self.text_var.trace_variable("w", self.text_var_listener)
 
-
     def create_action_button(self, data: dict):
-        if data.get("action") != "add":
-            return
+        builder_function = self.actions.get(data.get("action"))
+        builder_function(self, data)
+
+    def create_reset_button(self, data: dict):
+        background, foreground = self.render_element(data, self.control_canvas)
+        self.control_canvas.tag_bind(background, "<Button-1>", lambda e: self.text_var.set(self.default))
+        self.control_canvas.tag_bind(foreground, "<Button-1>", lambda e: self.text_var.set(self.default))
+
+    def create_add_button(self, data: dict):
         background, foreground = self.render_element(data, self.control_canvas)
         value = data.get("value")
         self.control_canvas.tag_bind(background, "<Button-1>", lambda e: self.add(value))
         self.control_canvas.tag_bind(foreground, "<Button-1>", lambda e: self.add(value))
 
     def add(self, value):
-        self.text_var.set(self.text_var.get()+value)
+        self.text_var.set(self.text_var.get() + value)
 
+    actions = {
+        "add": create_add_button,
+        "reset": create_reset_button
+    }
