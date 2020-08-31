@@ -122,6 +122,18 @@
               "y": 237,
               "anchor": "c"
             }
+          },
+          {
+            "action": "reset",
+            "label": "Reset",
+            "width": 60,
+            "height": 25,
+            "background": "#ffffff",
+            "position": {
+              "x": 61,
+              "y": 260,
+              "anchor": "c"
+            }
           }
         ]
       },
