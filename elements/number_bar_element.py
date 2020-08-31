@@ -15,7 +15,6 @@ class NumberBarElement(number_element.NumberElement):
     def add_overlay_element(self, data):
         if data.get("display").get("label") is None:
             data["display"]["label"] = " "
-        print(data.get("display"))
         self.overlay_elements.append(self.render_element(data.get("display"), self.overlay_canvas, state="hidden"))
 
     def text_var_listener(self, *args):
