@@ -19,7 +19,7 @@ class NumberBarElement(number_element.NumberElement):
         self.overlay_elements.append(self.render_element(data.get("display"), self.overlay_canvas, state="hidden"))
 
     def text_var_listener(self, *args):
-        self.run_foreground_config(text=self.get_text())
+        super(NumberBarElement, self).text_var_listener(*args)
         for num, elem in enumerate(self.overlay_elements):
             self.run_element_config(elem, state="normal" if num <= self.text_var.get() else "hidden")
 
