@@ -14,30 +14,32 @@ class TextElement(element.Element):
         self.text_var.trace_variable("w", self.text_var_listener)
 
         self.control_element_background, self.control_element_foreground = self.render_element(
-            self.control_data.get("display"),
+            self.control_data.get("display", {}),
             self.control_canvas)
 
         self.overlay_element_background, self.overlay_element_foreground = self.render_element(
-            self.overlay_data.get("display"),
+            self.overlay_data.get("display", {}),
             self.overlay_canvas)
 
         self.set_click_bindings()
 
-    def render_element(self, data: dict, canvas: tkinter.Canvas) -> (str, str):
-        if data is None:
-            return
+    def render_element(self, data: dict, canvas: tkinter.Canvas, **additional_args) -> (str, str):
+        if data is None or data == {}:
+            return "", ""
         width, height = parse.parse_geometry(data)
         background = canvas.create_rectangle(
             self.create_bbox(data.get("position"), width, height),
             fill=parse.parse_background(data),
-            width=0
+            width=0,
+            **additional_args
         )
         foreground = canvas.create_text(
             parse.parse_coordinates(data["position"], offset=True),
             anchor=parse.parse_anchor(data["position"]),
             text=parse.get_label(data) or self.get_text(),
             fill=parse.parse_foreground(data),
-            font=parse.parse_font(data)
+            font=parse.parse_font(data),
+            **additional_args
         )
 
         return background, foreground
