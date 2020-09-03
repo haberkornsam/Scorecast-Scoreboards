@@ -6,7 +6,7 @@ from elements import number_element, text_element, clock_element, enumeration_el
 
 
 def main():
-    with open("basketball_template.json") as template:
+    with open("lib/templates/basketball/template.json") as template:
         config = json.load(template)
         control_interface = control_window.ControlWindow(config['control'])
         overlay = overlay_window.OverlayWindow(config['overlay'])
