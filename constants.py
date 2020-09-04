@@ -17,10 +17,15 @@ DEFAULT_COLORS = {
 }
 
 BACKGROUND_ARG_MAP = {
-    "background": "fill"
+    "background": "fill",
+    "state": "state",
+    "outline-color": "outline",
+    "border-color": "outline",
+    "active-width": "activewidth"
 }
 
 FOREGROUND_ARG_MAP = {
     "label": "text",
-    "foreground": "fill"
+    "foreground": "fill",
+    "state": "state"
 }

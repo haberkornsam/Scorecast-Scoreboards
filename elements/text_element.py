@@ -6,24 +6,28 @@ from elements import element
 
 class TextElement(element.Element):
     default: str
+    control_label = "{value}"
+    overlay_label = "{value}"
 
     def __init__(self, control_canvas, overlay_canvas, data: dict):
         super().__init__(control_canvas, overlay_canvas, data)
         self.text_var = tkinter.StringVar(value=self.default)
 
         self.text_var.trace_variable("w", self.text_var_listener)
+        self.control_label = parse.get_label(self.control_data.get("display", {})) or self.control_label
 
         self.control_element_background, self.control_element_foreground = self.render_element(
             self.control_data.get("display", {}),
-            self.control_canvas)
+            self.control_canvas, self.control_label)
 
+        self.overlay_label = parse.get_label(self.overlay_data.get("display", {})) or self.overlay_label
         self.overlay_element_background, self.overlay_element_foreground = self.render_element(
             self.overlay_data.get("display", {}),
-            self.overlay_canvas)
+            self.overlay_canvas, self.overlay_label)
 
         self.set_click_bindings()
 
-    def render_element(self, data: dict, canvas: tkinter.Canvas, **additional_args) -> (str, str):
+    def render_element(self, data: dict, canvas: tkinter.Canvas, label=None, **additional_args) -> (str, str):
         if data is None or data == {}:
             return "", ""
         width, height = parse.parse_geometry(data)
@@ -33,10 +37,14 @@ class TextElement(element.Element):
             width=0,
             **additional_args
         )
+        if label is None:
+            text = parse.get_label(data) or self.get_text()
+        else:
+            text = label.format(value=self.get_text()) if label.find("{value}") >= 0 else label
         foreground = canvas.create_text(
             parse.parse_coordinates(data["position"], offset=True),
             anchor=parse.parse_anchor(data["position"]),
-            text=parse.get_label(data) or self.get_text(),
+            text=text,
             fill=parse.parse_foreground(data),
             font=parse.parse_font(data),
             **additional_args
@@ -45,8 +53,15 @@ class TextElement(element.Element):
         return background, foreground
 
     def text_var_listener(self, *args):
-        self.run_foreground_config(text=self.get_text())
-        self.run_overlay_foreground_config(text=self.get_text())
+        self.run_foreground_config(
+            text=self.control_label.format(value=self.get_text()) if
+            self.control_label.find("{value}") >= 0
+            else self.get_text()
+        )
+
+        self.run_overlay_foreground_config(text=self.overlay_label.format(value=self.get_text()) if
+            self.overlay_label.find("{value}") >= 0
+            else self.get_text())
 
     def get_text(self) -> str:
         return self.text_var.get()
