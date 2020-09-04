@@ -3,15 +3,11 @@ import tkinter
 import parse
 
 
-
-
 class Window(tkinter.Tk):
     background_color: str
     width = 0
     height = 0
     elements: list
-
-
 
     def __init__(self):
         super().__init__()

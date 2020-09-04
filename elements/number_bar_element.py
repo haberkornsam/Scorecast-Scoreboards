@@ -3,8 +3,9 @@ from elements import number_element
 
 class NumberBarElement(number_element.NumberElement):
 
-    def __init__(self, control_canvas, overlay_canvas, data: dict):
-        super(NumberBarElement, self).__init__(control_canvas, overlay_canvas, data)
+    def __init__(self, control_interface,
+                 overlay_interface, data: dict):
+        super(NumberBarElement, self).__init__(control_interface, overlay_interface, data)
         self.overlay_elements = []
         for bar in data.get("bars", []):
             self.add_overlay_element(bar.get("overlay", {}))

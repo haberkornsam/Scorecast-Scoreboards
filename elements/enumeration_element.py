@@ -1,5 +1,7 @@
 import tkinter
 
+import control_window
+import overlay_window
 import parse
 from constants import BACKGROUND_ARG_MAP, FOREGROUND_ARG_MAP
 from elements import element
@@ -7,10 +9,11 @@ from elements import element
 
 class EnumerationElement:
 
-    def __init__(self, control_canvas, overlay_canvas, data: dict):
+    def __init__(self, control_interface,
+                 overlay_interface, data: dict):
         self.enums = []
         for enum in data.get("enums"):
-            self.enums.append(_Enum(control_canvas, overlay_canvas, enum, self))
+            self.enums.append(_Enum(control_interface, overlay_interface, enum, self))
 
     def set_inactive(self, active):
         for enum in self.enums:
@@ -23,8 +26,8 @@ class _Enum(element.Element):
     control_active: dict
     overlay_active: dict
 
-    def __init__(self, control_canvas, overlay_canvas, data: dict, parent_element: EnumerationElement):
-        super().__init__(control_canvas, overlay_canvas, data)
+    def __init__(self, control_interface, overlay_interface, data: dict, parent_element: EnumerationElement):
+        super().__init__(control_interface, overlay_interface, data)
         self.parent = parent_element
 
         self.control_element_background, self.control_element_foreground = self.render_element(

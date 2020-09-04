@@ -13,7 +13,7 @@ def main():
 
         for element in config['elements']:
             constructor = ELEMENT_CONSTRUCTORS.get(element["type"])
-            constructor(control_interface.canvas, overlay.canvas, element)
+            constructor(control_interface, overlay, element)
 
     control_interface.mainloop()
 

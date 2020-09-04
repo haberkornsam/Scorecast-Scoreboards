@@ -16,9 +16,13 @@ class Element:
     control_element: str
     overlay_element: str
 
-    def __init__(self, control_canvas: tkinter.Canvas, overlay_canvas: tkinter.Canvas, data: dict):
-        self.control_canvas = control_canvas
-        self.overlay_canvas = overlay_canvas
+    def __init__(self, control_interface,
+                 overlay_interface, data: dict):
+
+        self.control_window = control_interface
+        self.overlay_window = overlay_interface
+        self.control_canvas = control_interface.canvas
+        self.overlay_canvas = overlay_interface.canvas
 
         self.control_data = data.get("control", {})
         self.overlay_data = data.get("overlay", {})
@@ -38,7 +42,8 @@ class Element:
     def run_overlay_config_changes(self, **kwargs):
         self.overlay_canvas.itemconfigure(self.overlay_element, **kwargs)
 
-    def create_bbox(self, position_data: dict, width: int, height: int) -> (int, int, int, int):
+    @staticmethod
+    def create_bbox(position_data: dict, width: int, height: int) -> (int, int, int, int):
         x, y = parse.parse_coordinates(position_data)
         anchor = parse.parse_anchor(position_data)
 

@@ -7,8 +7,9 @@ class NumberElement(text_element.TextElement):
     default: int
     action_buttons: [(int, int)]
 
-    def __init__(self, control_canvas, overlay_canvas, data: dict):
-        super().__init__(control_canvas, overlay_canvas, data)
+    def __init__(self, control_interface,
+                 overlay_interface, data: dict):
+        super().__init__(control_interface, overlay_interface, data)
         self.min_value = data.get("min-value")
         self.max_value = data.get("max-value")
 
@@ -41,13 +42,13 @@ class NumberElement(text_element.TextElement):
 
     def add(self, value):
         self.text_var.set(self.text_var.get() + value)
-    
+
     def text_var_listener(self, *args):
-        if self.min_value is not None and self.text_var.get()<self.min_value:
+        if self.min_value is not None and self.text_var.get() < self.min_value:
             self.text_var.set(self.min_value)
-        elif self.max_value is not None and self.text_var.get()>self.max_value:
+        elif self.max_value is not None and self.text_var.get() > self.max_value:
             self.text_var.set(self.max_value)
-        
+
         super(NumberElement, self).text_var_listener(*args)
 
     actions = {

@@ -1,5 +1,5 @@
-import time
 import re
+import time
 import tkinter
 
 from elements import text_element
@@ -10,8 +10,9 @@ EXPIRED_BINDING = "<<expired>>"
 class ClockElement(text_element.TextElement):
     default: float
 
-    def __init__(self, control_canvas, overlay_canvas, data: dict):
-        super().__init__(control_canvas, overlay_canvas, data)
+    def __init__(self, control_interface,
+                 overlay_interface, data: dict):
+        super().__init__(control_interface, overlay_interface, data)
         self.countdown = True
         self._start = 0.0
         self._starting_time = self.default
@@ -33,13 +34,11 @@ class ClockElement(text_element.TextElement):
         self._timer = self.control_canvas.after(50, self._update)
         if self._starting_time - self._elapsed_time <= 0:
             self.control_canvas.event_generate(EXPIRED_BINDING)
-            # self.toggle_clock(self.toggle_foreground)
 
     def _set_time(self, elapsed_time):
-        """ Set the time string to Minutes:Seconds:Hundreths """
-        newTime = self._starting_time - elapsed_time
+        new_time = self._starting_time - elapsed_time
 
-        self.text_var.set(newTime)
+        self.text_var.set(new_time)
 
     def running_var_listener(self, *args):
         if self._running.get():
@@ -70,7 +69,7 @@ class ClockElement(text_element.TextElement):
         elif re.fullmatch("^[0-9]*:[0-9]{2}([.][0-9]*$|$)", text):
             temp = text.split(":")
             print(temp)
-            self._starting_time = (float(temp[0])*60)+float(temp[1])
+            self._starting_time = (float(temp[0]) * 60) + float(temp[1])
             print(self._starting_time)
         else:
             return
@@ -120,16 +119,16 @@ class ClockElement(text_element.TextElement):
         self.control_canvas.itemconfigure(foreground, text="Stop" if self._running.get() else "Start")
 
 
-def format_time(time: float) -> (str, str):
-    minutes = int(time / 60)
-    seconds = int(time - minutes * 60.0)
-    hseconds = int((time - minutes * 60.0 - seconds) * 10)
+def format_time(_time: float) -> (str, str):
+    minutes = int(_time / 60)
+    seconds = int(_time - minutes * 60.0)
+    h_seconds = int((_time - minutes * 60.0 - seconds) * 10)
 
     if minutes == 0:
-        long = str(seconds).zfill(2) + "." + str(hseconds).zfill(1)
-        short = str(seconds) + "." + str(hseconds).zfill(1)
+        long = str(seconds).zfill(2) + "." + str(h_seconds).zfill(1)
+        short = str(seconds) + "." + str(h_seconds).zfill(1)
     else:
-        long = str(minutes).zfill(2) + ":" + str(seconds).zfill(2) + "." + str(hseconds).zfill(1)
+        long = str(minutes).zfill(2) + ":" + str(seconds).zfill(2) + "." + str(h_seconds).zfill(1)
         short = str(minutes) + ":" + str(seconds).zfill(2)
 
     return long, short

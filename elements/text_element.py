@@ -6,11 +6,14 @@ from elements import element
 
 class TextElement(element.Element):
     default: str
-    control_label = "{value}"
-    overlay_label = "{value}"
 
-    def __init__(self, control_canvas, overlay_canvas, data: dict):
-        super().__init__(control_canvas, overlay_canvas, data)
+    def __init__(self, control_interface,
+                 overlay_interface, data: dict):
+
+        self.control_label = "{value}"
+        self.overlay_label = "{value}"
+
+        super().__init__(control_interface, overlay_interface, data)
         self.text_var = tkinter.StringVar(value=self.default)
 
         self.text_var.trace_variable("w", self.text_var_listener)
@@ -59,9 +62,9 @@ class TextElement(element.Element):
             else self.get_text()
         )
 
-        self.run_overlay_foreground_config(text=self.overlay_label.format(value=self.get_text()) if
-            self.overlay_label.find("{value}") >= 0
-            else self.get_text())
+        self.run_overlay_foreground_config(
+            text=self.overlay_label.format(value=self.get_text()) if self.overlay_label.find(
+                "{value}") >= 0 else self.get_text())
 
     def get_text(self) -> str:
         return self.text_var.get()

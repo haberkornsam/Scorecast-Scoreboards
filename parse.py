@@ -1,11 +1,6 @@
 import constants
 
 
-class Parser:
-    def parse_geometry(self, data: dict) -> (str, str):
-        return data.get("width"), data.get("height")
-
-
 def parse_geometry(data: dict) -> (int, int):
     return data.get("width"), data.get("height")
 
@@ -17,6 +12,7 @@ def parse_coordinates(data: dict, offset=False) -> (int, int):
 
 def parse_justify(data: dict) -> str:
     return data.get("justify", "left")
+
 
 def parse_anchor(data: dict) -> str:
     return data.get("anchor", "nw")
@@ -51,8 +47,10 @@ def parse_font(data: dict) -> (str, int, str):
         extras.append(extra)
     return family, size, " ".join(extras)
 
+
 def get_label(data: dict) -> str:
     return data.get("label")
+
 
 def _parse_extra(data: dict) -> str:
     for extra in constants.FONT_STYLES:
