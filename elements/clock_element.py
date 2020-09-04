@@ -77,7 +77,7 @@ class ClockElement(text_element.TextElement):
         super(ClockElement, self).hide_edit_box(event, window, value=self._starting_time)
 
     def create_start_button(self, data: dict):
-        background, foreground = self.render_element(data, self.control_canvas)
+        background, foreground = self.render_element(data, self.control_window)
         self.control_canvas.tag_bind(background, "<Button-1>",
                                      lambda e: self.toggle_clock(foreground, background))
         self.control_canvas.tag_bind(foreground, "<Button-1>",

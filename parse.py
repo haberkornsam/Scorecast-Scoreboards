@@ -38,21 +38,22 @@ def _parse_color(color: str) -> str:
     return constants.DEFAULT_COLORS.get(color) or color
 
 
-def parse_font(data: dict) -> (str, int, str):
+def parse_font(data: dict) -> [str, int, str]:
     font = data.get("font", {})
-    family = font.get("family", constants.FONT_FAMILY)
-    size = font.get("size", constants.FONT_SIZE)
+    formatted_font = [font.get("family", constants.FONT_FAMILY), font.get("size", constants.FONT_SIZE)]
     extras = []
-    for extra in _parse_extra(font):
-        extras.append(extra)
-    return family, size, " ".join(extras)
+    for extra, active in parse_extra(font):
+        if active:
+            extras.append(extra)
+    formatted_font.append(" ".join(extras))
+    return formatted_font
 
 
 def get_label(data: dict) -> str:
     return data.get("label")
 
 
-def _parse_extra(data: dict) -> str:
+def parse_extra(data: dict) -> (str, bool):
     for extra in constants.FONT_STYLES:
-        if data.get(extra, None):
-            yield extra
+        if data.get(extra) is not None:
+            yield extra, data.get(extra)

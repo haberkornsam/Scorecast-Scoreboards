@@ -21,16 +21,17 @@ class TextElement(element.Element):
 
         self.control_element_background, self.control_element_foreground = self.render_element(
             self.control_data.get("display", {}),
-            self.control_canvas, self.control_label)
+            self.control_window, self.control_label)
 
         self.overlay_label = parse.get_label(self.overlay_data.get("display", {})) or self.overlay_label
         self.overlay_element_background, self.overlay_element_foreground = self.render_element(
             self.overlay_data.get("display", {}),
-            self.overlay_canvas, self.overlay_label)
+            self.overlay_window, self.overlay_label)
 
         self.set_click_bindings()
 
-    def render_element(self, data: dict, canvas: tkinter.Canvas, label=None, **additional_args) -> (str, str):
+    def render_element(self, data: dict, window, label=None, **additional_args) -> (str, str):
+        canvas = window.canvas
         if data is None or data == {}:
             return "", ""
         width, height = parse.parse_geometry(data)
@@ -49,7 +50,7 @@ class TextElement(element.Element):
             anchor=parse.parse_anchor(data["position"]),
             text=text,
             fill=parse.parse_foreground(data),
-            font=parse.parse_font(data),
+            font=window.get_font(data.get("font", {})),
             **additional_args
         )
 

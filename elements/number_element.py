@@ -30,12 +30,12 @@ class NumberElement(text_element.TextElement):
         builder_function(self, data)
 
     def create_reset_button(self, data: dict):
-        background, foreground = self.render_element(data, self.control_canvas)
+        background, foreground = self.render_element(data, self.control_window)
         self.control_canvas.tag_bind(background, "<Button-1>", lambda e: self.text_var.set(self.default))
         self.control_canvas.tag_bind(foreground, "<Button-1>", lambda e: self.text_var.set(self.default))
 
     def create_add_button(self, data: dict):
-        background, foreground = self.render_element(data, self.control_canvas)
+        background, foreground = self.render_element(data, self.control_window)
         value = data.get("value")
         self.control_canvas.tag_bind(background, "<Button-1>", lambda e: self.add(value))
         self.control_canvas.tag_bind(foreground, "<Button-1>", lambda e: self.add(value))

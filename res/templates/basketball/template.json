@@ -3,7 +3,11 @@
     "width": 400,
     "height": 310,
     "background": "#000000",
-    "title": "Basketball Scoreboard Controller"
+    "title": "Basketball Scoreboard Controller",
+    "font": {
+      "family": "times",
+      "size": "15"
+    }
   },
   "overlay": {
     "width": 1280,
@@ -22,8 +26,6 @@
           "height": 25,
           "background": "#ffffff",
           "font": {
-            "family": "times",
-            "size": "15",
             "bold": true
           },
           "position": {
@@ -64,8 +66,6 @@
           "height": 50,
           "background": "#ffffff",
           "font": {
-            "family": "times",
-            "size": "15",
             "bold": true
           },
           "position": {
@@ -159,8 +159,6 @@
           "height": 25,
           "background": "#ffffff",
           "font": {
-            "family": "times",
-            "size": "15",
             "bold": true
           },
           "position": {
@@ -201,8 +199,6 @@
           "height": 50,
           "background": "#ffffff",
           "font": {
-            "family": "times",
-            "size": "15",
             "bold": true
           },
           "position": {
@@ -296,8 +292,6 @@
           "height": 25,
           "background": "#ffffff",
           "font": {
-            "family": "times",
-            "size": "15",
             "bold": true
           },
           "position": {
@@ -334,8 +328,6 @@
           "height": 25,
           "background": "#ffffff",
           "font": {
-            "family": "times",
-            "size": "15",
             "bold": true
           },
           "position": {
@@ -351,10 +343,6 @@
             "height": 25,
             "label": "Start",
             "background": "#ffffff",
-            "font": {
-              "family": "times",
-              "size": "15"
-            },
             "position": {
               "x": 200,
               "y": 52,
@@ -396,7 +384,6 @@
         }
       }
     },
-
     {
       "name": "away-fouls-static",
       "type": "text",
@@ -406,10 +393,6 @@
           "width": 100,
           "height": 25,
           "foreground": "#ffffff",
-          "font": {
-            "family": "times",
-            "size": "15"
-          },
           "position": {
             "x": 60,
             "y": 150,
@@ -427,10 +410,6 @@
           "width": 100,
           "height": 25,
           "foreground": "#ffffff",
-          "font": {
-            "family": "times",
-            "size": "15"
-          },
           "position": {
             "x": 340,
             "y": 150,
@@ -451,8 +430,6 @@
           "height": 45,
           "background": "#ffffff",
           "font": {
-            "family": "times",
-            "size": "15",
             "bold": true
           },
           "position": {
@@ -520,8 +497,6 @@
           "height": 45,
           "background": "#ffffff",
           "font": {
-            "family": "times",
-            "size": "15",
             "bold": true
           },
           "position": {
@@ -586,10 +561,6 @@
           "width": 100,
           "height": 25,
           "foreground": "#ffffff",
-          "font": {
-            "family": "times",
-            "size": "15"
-          },
           "position": {
             "x": 60,
             "y": 235,
@@ -607,10 +578,6 @@
           "width": 100,
           "height": 25,
           "foreground": "#ffffff",
-          "font": {
-            "family": "times",
-            "size": "15"
-          },
           "position": {
             "x": 340,
             "y": 235,
@@ -631,8 +598,6 @@
           "height": 25,
           "background": "#ffffff",
           "font": {
-            "family": "times",
-            "size": "15",
             "bold": true
           },
           "position": {
@@ -649,10 +614,6 @@
             "width": 100,
             "height": 25,
             "background": "#ffffff",
-            "font": {
-              "family": "times",
-              "size": "15"
-            },
             "position": {
               "x": 60,
               "y": 290,
@@ -746,8 +707,6 @@
           "height": 25,
           "background": "#ffffff",
           "font": {
-            "family": "times",
-            "size": "15",
             "bold": true
           },
           "position": {
@@ -764,10 +723,6 @@
             "width": 100,
             "height": 25,
             "background": "#ffffff",
-            "font": {
-              "family": "times",
-              "size": "15"
-            },
             "position": {
               "x": 340,
               "y": 290,
@@ -863,7 +818,6 @@
               "background": "#ffffff",
               "label": "BONUS",
               "font": {
-                "family": "times",
                 "size": 10
               },
               "position": {
@@ -917,7 +871,6 @@
               "background": "#ffffff",
               "label": "BONUS+",
               "font": {
-                "family": "times",
                 "size": 10
               },
               "position": {
@@ -977,7 +930,6 @@
               "background": "#ffffff",
               "label": "BONUS",
               "font": {
-                "family": "times",
                 "size": 10
               },
               "position": {
@@ -1031,7 +983,6 @@
               "background": "#ffffff",
               "label": "BONUS+",
               "font": {
-                "family": "times",
                 "size": 10
               },
               "position": {
@@ -1091,7 +1042,6 @@
               "background": "#ffffff",
               "label": "POSS\n",
               "font": {
-                "family": "times",
                 "size": 16
               },
               "position": {
@@ -1140,7 +1090,6 @@
               "background": "#ffffff",
               "label": "POSS\n",
               "font": {
-                "family": "times",
                 "size": 16
               },
               "position": {

@@ -8,6 +8,7 @@ class Window(tkinter.Tk):
     width = 0
     height = 0
     elements: list
+    font: [str, int, str]
 
     def __init__(self):
         super().__init__()
@@ -41,7 +42,23 @@ class Window(tkinter.Tk):
         self.configure(bg=self.background_color)
         self.canvas.config(bg=self.background_color)
 
+    def set_font(self, font: [str, int, str]):
+        self.font = font
+
+    def get_font(self, changes: dict) -> [str, int, str]:
+        final_font = [changes.get("family", self.font[0]), changes.get("size", self.font[1])]
+        extras = self.font[2].split(" ")
+        for extra, active in parse.parse_extra(changes):
+            if active and self.font[2].find(extra) < 0:
+                extras.append(extra)
+            if not active and self.font[2].find(extra) >= 0:
+                extras.remove(extra)
+
+        final_font.append(" ".join(extras))
+        return final_font
+
     def read_config(self, data: dict) -> None:
         self.set_geometry(parse.parse_geometry(data))
         self.set_title(parse.parse_title(data))
         self.set_background_color(parse.parse_background(data))
+        self.set_font(parse.parse_font(data))
