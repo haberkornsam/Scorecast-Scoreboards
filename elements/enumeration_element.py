@@ -6,9 +6,9 @@ from elements import element
 
 
 class EnumerationElement:
-    enums = []
 
     def __init__(self, control_canvas, overlay_canvas, data: dict):
+        self.enums = []
         for enum in data.get("enums"):
             self.enums.append(_Enum(control_canvas, overlay_canvas, enum, self))
 

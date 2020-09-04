@@ -5,7 +5,7 @@ from elements import text_element
 
 class NumberElement(text_element.TextElement):
     default: int
-    action_buttons = [(int, int)]
+    action_buttons: [(int, int)]
 
     def __init__(self, control_canvas, overlay_canvas, data: dict):
         super().__init__(control_canvas, overlay_canvas, data)

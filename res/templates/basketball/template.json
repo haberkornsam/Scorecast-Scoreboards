@@ -1,7 +1,7 @@
 {
   "control": {
-    "width": 510,
-    "height": 600,
+    "width": 400,
+    "height": 310,
     "background": "#000000",
     "title": "Basketball Scoreboard Controller"
   },
@@ -13,9 +13,9 @@
   },
   "elements": [
     {
-      "name": "home-team",
+      "name": "away-team",
       "type": "text",
-      "default": "Home",
+      "default": "VISITOR",
       "control": {
         "display": {
           "width": 100,
@@ -27,48 +27,50 @@
             "bold": true
           },
           "position": {
-            "x": 100,
-            "y": 100,
+            "x": 60,
+            "y": 22,
             "anchor": "c"
           }
         }
       },
       "overlay": {
         "display": {
-          "width": 100,
-          "height": 25,
-          "background": "home-primary",
-          "foreground": "dark",
+          "width": 200,
+          "height": 35,
+          "background": "away-primary",
+          "foreground": "light",
+          "font": {
+            "size": 18
+          },
           "position": {
-            "x": 500,
-            "y": 60,
+            "x": 253,
+            "y": 77,
             "anchor": "w",
             "text-offset": {
-              "x": 5
+              "x": 15
             }
           }
         }
       }
     },
     {
-      "name": "home-score",
+      "name": "away-score",
       "type": "number",
       "default": 0,
       "min-value": 0,
-      "max-value": 10,
       "control": {
         "display": {
           "width": 100,
-          "height": 100,
+          "height": 50,
           "background": "#ffffff",
           "font": {
             "family": "times",
-            "size": "20",
+            "size": "15",
             "bold": true
           },
           "position": {
-            "x": 100,
-            "y": 170,
+            "x": 60,
+            "y": 65,
             "anchor": "c"
           }
         },
@@ -81,8 +83,8 @@
             "height": 25,
             "background": "#ffffff",
             "position": {
-              "x": 61,
-              "y": 237,
+              "x": 21,
+              "y": 107,
               "anchor": "c"
             }
           },
@@ -94,8 +96,8 @@
             "height": 25,
             "background": "#ffffff",
             "position": {
-              "x": 86,
-              "y": 237,
+              "x": 47,
+              "y": 107,
               "anchor": "c"
             }
           },
@@ -107,8 +109,8 @@
             "height": 25,
             "background": "#ffffff",
             "position": {
-              "x": 111,
-              "y": 237,
+              "x": 73,
+              "y": 107,
               "anchor": "c"
             }
           },
@@ -120,20 +122,8 @@
             "height": 25,
             "background": "#ffffff",
             "position": {
-              "x": 136,
-              "y": 237,
-              "anchor": "c"
-            }
-          },
-          {
-            "action": "reset",
-            "label": "Reset",
-            "width": 60,
-            "height": 25,
-            "background": "#ffffff",
-            "position": {
-              "x": 61,
-              "y": 260,
+              "x": 99,
+              "y": 107,
               "anchor": "c"
             }
           }
@@ -141,22 +131,28 @@
       },
       "overlay": {
         "display": {
-          "width": 25,
-          "height": 25,
-          "background": "home-secondary",
-          "foreground": "dark",
+          "width": 45,
+          "height": 35,
+          "background": "away-secondary",
+          "foreground": "light",
+          "font": {
+            "size": 22
+          },
           "position": {
-            "x": 612,
-            "y": 60,
-            "anchor": "c"
+            "x": 475,
+            "y": 77,
+            "anchor": "c",
+            "text-offset": {
+              "y": 1
+            }
           }
         }
       }
     },
     {
-      "name": "clock",
-      "type": "clock",
-      "default": 1082,
+      "name": "home-team",
+      "type": "text",
+      "default": "HOME",
       "control": {
         "display": {
           "width": 100,
@@ -168,8 +164,183 @@
             "bold": true
           },
           "position": {
-            "x": 150,
-            "y": 150,
+            "x": 340,
+            "y": 22,
+            "anchor": "c"
+          }
+        }
+      },
+      "overlay": {
+        "display": {
+          "width": 200,
+          "height": 35,
+          "background": "home-primary",
+          "foreground": "light",
+          "font": {
+            "size": 18
+          },
+          "position": {
+            "x": 498,
+            "y": 77,
+            "anchor": "w",
+            "text-offset": {
+              "x": 15
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "home-score",
+      "type": "number",
+      "default": 0,
+      "min-value": 0,
+      "control": {
+        "display": {
+          "width": 100,
+          "height": 50,
+          "background": "#ffffff",
+          "font": {
+            "family": "times",
+            "size": "15",
+            "bold": true
+          },
+          "position": {
+            "x": 340,
+            "y": 65,
+            "anchor": "c"
+          }
+        },
+        "actions": [
+          {
+            "action": "add",
+            "value": 1,
+            "label": "+1",
+            "width": 22,
+            "height": 25,
+            "background": "#ffffff",
+            "position": {
+              "x": 301,
+              "y": 107,
+              "anchor": "c"
+            }
+          },
+          {
+            "action": "add",
+            "value": 2,
+            "label": "+2",
+            "width": 22,
+            "height": 25,
+            "background": "#ffffff",
+            "position": {
+              "x": 327,
+              "y": 107,
+              "anchor": "c"
+            }
+          },
+          {
+            "action": "add",
+            "value": 3,
+            "label": "+3",
+            "width": 22,
+            "height": 25,
+            "background": "#ffffff",
+            "position": {
+              "x": 353,
+              "y": 107,
+              "anchor": "c"
+            }
+          },
+          {
+            "action": "add",
+            "value": -1,
+            "label": "-1",
+            "width": 22,
+            "height": 25,
+            "background": "#ffffff",
+            "position": {
+              "x": 379,
+              "y": 107,
+              "anchor": "c"
+            }
+          }
+        ]
+      },
+      "overlay": {
+        "display": {
+          "width": 45,
+          "height": 35,
+          "background": "home-secondary",
+          "foreground": "light",
+          "font": {
+            "size": 22
+          },
+          "position": {
+            "x": 720,
+            "y": 77,
+            "anchor": "c",
+            "text-offset": {
+              "y": 1
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "period",
+      "type": "text",
+      "default": "1st Half",
+      "control": {
+        "display": {
+          "width": 100,
+          "height": 25,
+          "background": "#ffffff",
+          "font": {
+            "family": "times",
+            "size": "15",
+            "bold": true
+          },
+          "position": {
+            "x": 200,
+            "y": 107,
+            "anchor": "c"
+          }
+        }
+      },
+      "overlay": {
+        "display": {
+          "width": 100,
+          "height": 35,
+          "background": "dark",
+          "foreground": "light",
+          "font": {
+            "size": 18
+          },
+          "position": {
+            "x": 792,
+            "y": 77,
+            "anchor": "c"
+          }
+        }
+      }
+    },
+    {
+      "name": "clock",
+      "type": "clock",
+      "default": 1080,
+      "control": {
+        "display": {
+          "width": 100,
+          "height": 25,
+          "background": "#ffffff",
+          "font": {
+            "family": "times",
+            "size": "15",
+            "bold": true
+          },
+          "position": {
+            "x": 200,
+            "y": 22,
             "anchor": "c"
           }
         },
@@ -180,9 +351,13 @@
             "height": 25,
             "label": "Start",
             "background": "#ffffff",
+            "font": {
+              "family": "times",
+              "size": "15"
+            },
             "position": {
-              "x": 190,
-              "y": 237,
+              "x": 200,
+              "y": 52,
               "anchor": "c"
             }
           }
@@ -191,143 +366,278 @@
       "overlay": {
         "display": {
           "width": 100,
-          "height": 25,
-          "background": "#000000",
-          "foreground": "light",
+          "height": 35,
+          "background": "dark",
+          "foreground": "gold",
+          "font": {
+            "size": 20
+          },
           "position": {
-            "x": 500,
-            "y": 20,
-            "anchor": "w",
-            "text-offset": {
-              "x": 5
-            }
+            "x": 892,
+            "y": 77,
+            "anchor": "c"
           }
         }
       }
     },
     {
-      "name": "possession",
-      "type": "enumeration",
-      "enums": [
-        {
-          "default-active": false,
-          "name": "home-poss",
-          "control": {
-            "display": {
-              "width": 50,
-              "height": 50,
-              "background": "#ffffff",
-              "label": "POSS\n",
-              "font": {
-                "family": "times",
-                "size": 20,
-                "bold": true
-              },
-              "position": {
-                "x": 400,
-                "y": 200,
-                "anchor": "c"
-              }
-            }
-          },
-          "overlay": {
-            "display": {
-              "width": 25,
-              "height": 5,
-              "background": "",
-              "position": {
-                "x": 600,
-                "y": 48,
-                "anchor": "nw"
-              }
-            }
-          },
-          "active": {
-            "control": {
-              "label": "POSS\n-->"
-            },
-            "overlay": {
-              "background": "gold"
-            }
-          },
-          "inactive": {
-            "control": {
-              "label": "POSS\n"
-            },
-            "overlay": {
-              "background": ""
-            }
-          }
-        },
-        {
-          "default-active": false,
-          "name": "away-poss",
-          "control": {
-            "display": {
-              "width": 50,
-              "height": 50,
-              "background": "#ffffff",
-              "label": "POSS\n",
-              "font": {
-                "family": "times",
-                "size": 20,
-                "bold": true
-              },
-              "position": {
-                "x": 455,
-                "y": 200,
-                "anchor": "c"
-              }
-            }
-          },
-          "overlay": {
-            "display": {
-              "width": 25,
-              "height": 5,
-              "background": "",
-              "position": {
-                "x": 670,
-                "y": 48,
-                "anchor": "nw"
-              }
-            }
-          },
-          "active": {
-            "control": {
-              "label": "POSS\n<--"
-            },
-            "overlay": {
-              "background": "gold"
-            }
-          },
-          "inactive": {
-            "control": {
-              "label": "POSS\n"
-            },
-            "overlay": {
-              "background": ""
-            }
+      "name": "extras-bar",
+      "type": "text",
+      "overlay": {
+        "display": {
+          "width": 689,
+          "height": 15,
+          "background": "dark",
+          "position": {
+            "x": 253,
+            "y": 94,
+            "anchor": "nw"
           }
         }
-      ]
+      }
     },
+
     {
-      "name": "home-timeouts",
-      "type": "number-bar",
-      "default": 5,
+      "name": "away-fouls-static",
+      "type": "text",
+      "default": "Fouls:",
       "control": {
         "display": {
-          "width": 50,
-          "height": 50,
+          "width": 100,
+          "height": 25,
+          "foreground": "#ffffff",
+          "font": {
+            "family": "times",
+            "size": "15"
+          },
+          "position": {
+            "x": 60,
+            "y": 150,
+            "anchor": "c"
+          }
+        }
+      }
+    },
+    {
+      "name": "home-fouls-static",
+      "type": "text",
+      "default": "Fouls:",
+      "control": {
+        "display": {
+          "width": 100,
+          "height": 25,
+          "foreground": "#ffffff",
+          "font": {
+            "family": "times",
+            "size": "15"
+          },
+          "position": {
+            "x": 340,
+            "y": 150,
+            "anchor": "c"
+          }
+        }
+      }
+    },
+    {
+      "name": "away-fouls",
+      "type": "number",
+      "default": 0,
+      "min-value": 0,
+      "max-value": 10,
+      "control": {
+        "display": {
+          "width": 60,
+          "height": 45,
           "background": "#ffffff",
           "font": {
             "family": "times",
-            "size": "20",
+            "size": "15",
             "bold": true
           },
           "position": {
-            "x": 100,
-            "y": 40,
+            "x": 40,
+            "y": 184,
+            "anchor": "c"
+          }
+        },
+        "actions": [
+          {
+            "action": "add",
+            "value": 1,
+            "label": "+1",
+            "width": 35,
+            "height": 20,
+            "background": "#ffffff",
+            "position": {
+              "x": 93,
+              "y": 172,
+              "anchor": "c"
+            }
+          },
+          {
+            "action": "add",
+            "value": -1,
+            "label": "-1",
+            "width": 35,
+            "height": 20,
+            "background": "#ffffff",
+            "position": {
+              "x": 93,
+              "y": 197,
+              "anchor": "c"
+            }
+          }
+        ]
+      },
+      "overlay": {
+        "display": {
+          "width": 45,
+          "height": 15,
+          "label": "Fouls: {value}",
+          "background": "",
+          "foreground": "light",
+          "font": {
+            "size": 10
+          },
+          "position": {
+            "x": 475,
+            "y": 101,
+            "anchor": "c"
+          }
+        }
+      }
+    },
+    {
+      "name": "home-fouls",
+      "type": "number",
+      "default": 0,
+      "min-value": 0,
+      "max-value": 10,
+      "control": {
+        "display": {
+          "width": 60,
+          "height": 45,
+          "background": "#ffffff",
+          "font": {
+            "family": "times",
+            "size": "15",
+            "bold": true
+          },
+          "position": {
+            "x": 360,
+            "y": 184,
+            "anchor": "c"
+          }
+        },
+        "actions": [
+          {
+            "action": "add",
+            "value": 1,
+            "label": "+1",
+            "width": 35,
+            "height": 20,
+            "background": "#ffffff",
+            "position": {
+              "x": 307,
+              "y": 172,
+              "anchor": "c"
+            }
+          },
+          {
+            "action": "add",
+            "value": -1,
+            "label": "-1",
+            "width": 35,
+            "height": 20,
+            "background": "#ffffff",
+            "position": {
+              "x": 307,
+              "y": 197,
+              "anchor": "c"
+            }
+          }
+        ]
+      },
+      "overlay": {
+        "display": {
+          "width": 45,
+          "height": 15,
+          "label": "Fouls: {value}",
+          "background": "",
+          "foreground": "light",
+          "font": {
+            "size": 10
+          },
+          "position": {
+            "x": 720,
+            "y": 101,
+            "anchor": "c"
+          }
+        }
+      }
+    },
+    {
+      "name": "away-timeouts-static",
+      "type": "text",
+      "default": "Timeouts:",
+      "control": {
+        "display": {
+          "width": 100,
+          "height": 25,
+          "foreground": "#ffffff",
+          "font": {
+            "family": "times",
+            "size": "15"
+          },
+          "position": {
+            "x": 60,
+            "y": 235,
+            "anchor": "c"
+          }
+        }
+      }
+    },
+    {
+      "name": "home-timeouts-static",
+      "type": "text",
+      "default": "Timeouts:",
+      "control": {
+        "display": {
+          "width": 100,
+          "height": 25,
+          "foreground": "#ffffff",
+          "font": {
+            "family": "times",
+            "size": "15"
+          },
+          "position": {
+            "x": 340,
+            "y": 235,
+            "anchor": "c"
+          }
+        }
+      }
+    },
+    {
+      "name": "away-timeouts",
+      "type": "number-bar",
+      "default": 5,
+      "min-value": 0,
+      "max-value": 5,
+      "control": {
+        "display": {
+          "width": 100,
+          "height": 25,
+          "background": "#ffffff",
+          "font": {
+            "family": "times",
+            "size": "15",
+            "bold": true
+          },
+          "position": {
+            "x": 60,
+            "y": 260,
             "anchor": "c"
           }
         },
@@ -335,13 +645,17 @@
           {
             "action": "add",
             "value": -1,
-            "label": "-1",
-            "width": 22,
+            "label": "Take TO",
+            "width": 100,
             "height": 25,
             "background": "#ffffff",
+            "font": {
+              "family": "times",
+              "size": "15"
+            },
             "position": {
-              "x": 200,
-              "y": 40,
+              "x": 60,
+              "y": 290,
               "anchor": "c"
             }
           }
@@ -352,12 +666,12 @@
           "overlay": {
             "display": {
               "width": 25,
-              "height": 5,
-              "background": "gold",
+              "height": 4,
+              "background": "#ffffff",
               "position": {
-                "x": 10,
-                "y": 10,
-                "anchor": "nw"
+                "x": 257,
+                "y": 101,
+                "anchor": "w"
               }
             }
           }
@@ -366,12 +680,12 @@
           "overlay": {
             "display": {
               "width": 25,
-              "height": 5,
-              "background": "gold",
+              "height": 4,
+              "background": "#ffffff",
               "position": {
-                "x": 37,
-                "y": 10,
-                "anchor": "nw"
+                "x": 286,
+                "y": 101,
+                "anchor": "w"
               }
             }
           }
@@ -380,12 +694,12 @@
           "overlay": {
             "display": {
               "width": 25,
-              "height": 5,
-              "background": "gold",
+              "height": 4,
+              "background": "#ffffff",
               "position": {
-                "x": 64,
-                "y": 10,
-                "anchor": "nw"
+                "x": 315,
+                "y": 101,
+                "anchor": "w"
               }
             }
           }
@@ -394,12 +708,12 @@
           "overlay": {
             "display": {
               "width": 25,
-              "height": 5,
-              "background": "gold",
+              "height": 4,
+              "background": "#ffffff",
               "position": {
-                "x": 91,
-                "y": 10,
-                "anchor": "nw"
+                "x": 344,
+                "y": 101,
+                "anchor": "w"
               }
             }
           }
@@ -408,13 +722,460 @@
           "overlay": {
             "display": {
               "width": 25,
-              "height": 5,
+              "height": 4,
+              "background": "#ffffff",
+              "position": {
+                "x": 373,
+                "y": 101,
+                "anchor": "w"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "home-timeouts",
+      "type": "number-bar",
+      "default": 5,
+      "min-value": 0,
+      "max-value": 5,
+      "control": {
+        "display": {
+          "width": 100,
+          "height": 25,
+          "background": "#ffffff",
+          "font": {
+            "family": "times",
+            "size": "15",
+            "bold": true
+          },
+          "position": {
+            "x": 340,
+            "y": 260,
+            "anchor": "c"
+          }
+        },
+        "actions": [
+          {
+            "action": "add",
+            "value": -1,
+            "label": "Take TO",
+            "width": 100,
+            "height": 25,
+            "background": "#ffffff",
+            "font": {
+              "family": "times",
+              "size": "15"
+            },
+            "position": {
+              "x": 340,
+              "y": 290,
+              "anchor": "c"
+            }
+          }
+        ]
+      },
+      "bars": [
+        {
+          "overlay": {
+            "display": {
+              "width": 25,
+              "height": 4,
+              "background": "#ffffff",
+              "position": {
+                "x": 502,
+                "y": 101,
+                "anchor": "w"
+              }
+            }
+          }
+        },
+        {
+          "overlay": {
+            "display": {
+              "width": 25,
+              "height": 4,
+              "background": "#ffffff",
+              "position": {
+                "x": 531,
+                "y": 101,
+                "anchor": "w"
+              }
+            }
+          }
+        },
+        {
+          "overlay": {
+            "display": {
+              "width": 25,
+              "height": 4,
+              "background": "#ffffff",
+              "position": {
+                "x": 560,
+                "y": 101,
+                "anchor": "w"
+              }
+            }
+          }
+        },
+        {
+          "overlay": {
+            "display": {
+              "width": 25,
+              "height": 4,
+              "background": "#ffffff",
+              "position": {
+                "x": 589,
+                "y": 101,
+                "anchor": "w"
+              }
+            }
+          }
+        },
+        {
+          "overlay": {
+            "display": {
+              "width": 25,
+              "height": 4,
+              "background": "#ffffff",
+              "position": {
+                "x": 618,
+                "y": 101,
+                "anchor": "w"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "away-bonus",
+      "type": "enumeration",
+      "enums": [
+        {
+          "name": "bonus",
+          "default-active": false,
+          "control": {
+            "display": {
+              "width": 45,
+              "height": 20,
+              "background": "#ffffff",
+              "label": "BONUS",
+              "font": {
+                "family": "times",
+                "size": 10
+              },
+              "position": {
+                "x": 147,
+                "y": 172,
+                "anchor": "c"
+              }
+            }
+          },
+          "overlay": {
+            "display": {
+              "width": 45,
+              "height": 15,
+              "background": "",
+              "foreground": "gold",
+              "font": {
+                "size": 10
+              },
+              "label": "BONUS",
+              "position": {
+                "x": 425,
+                "y": 101,
+                "anchor": "c"
+              }
+            }
+          },
+          "active": {
+            "control": {
+              "background": "gold"
+            },
+            "overlay": {
+              "state": "normal"
+            }
+          },
+          "inactive": {
+            "control": {
+              "background": "#ffffff"
+            },
+            "overlay": {
+              "state": "hidden"
+            }
+          }
+        },
+        {
+          "name": "bonus+",
+          "default-active": false,
+          "control": {
+            "display": {
+              "width": 45,
+              "height": 20,
+              "background": "#ffffff",
+              "label": "BONUS+",
+              "font": {
+                "family": "times",
+                "size": 10
+              },
+              "position": {
+                "x": 147,
+                "y": 197,
+                "anchor": "c"
+              }
+            }
+          },
+          "overlay": {
+            "display": {
+              "width": 45,
+              "height": 15,
+              "background": "",
+              "foreground": "gold",
+              "font": {
+                "size": 10
+              },
+              "label": "BONUS+",
+              "position": {
+                "x": 425,
+                "y": 101,
+                "anchor": "c"
+              }
+            }
+          },
+          "active": {
+            "control": {
+              "background": "gold"
+            },
+            "overlay": {
+              "state": "normal"
+            }
+          },
+          "inactive": {
+            "control": {
+              "background": "#ffffff"
+            },
+            "overlay": {
+              "state": "hidden"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "home-bonus",
+      "type": "enumeration",
+      "enums": [
+        {
+          "name": "bonus",
+          "default-active": false,
+          "control": {
+            "display": {
+              "width": 45,
+              "height": 20,
+              "background": "#ffffff",
+              "label": "BONUS",
+              "font": {
+                "family": "times",
+                "size": 10
+              },
+              "position": {
+                "x": 253,
+                "y": 172,
+                "anchor": "c"
+              }
+            }
+          },
+          "overlay": {
+            "display": {
+              "width": 45,
+              "height": 15,
+              "background": "",
+              "foreground": "gold",
+              "font": {
+                "size": 10
+              },
+              "label": "BONUS",
+              "position": {
+                "x": 670,
+                "y": 101,
+                "anchor": "c"
+              }
+            }
+          },
+          "active": {
+            "control": {
+              "background": "gold"
+            },
+            "overlay": {
+              "state": "normal"
+            }
+          },
+          "inactive": {
+            "control": {
+              "background": "#ffffff"
+            },
+            "overlay": {
+              "state": "hidden"
+            }
+          }
+        },
+        {
+          "name": "bonus+",
+          "default-active": false,
+          "control": {
+            "display": {
+              "width": 45,
+              "height": 20,
+              "background": "#ffffff",
+              "label": "BONUS+",
+              "font": {
+                "family": "times",
+                "size": 10
+              },
+              "position": {
+                "x": 253,
+                "y": 197,
+                "anchor": "c"
+              }
+            }
+          },
+          "overlay": {
+            "display": {
+              "width": 45,
+              "height": 15,
+              "background": "",
+              "foreground": "gold",
+              "font": {
+                "size": 10
+              },
+              "label": "BONUS+",
+              "position": {
+                "x": 670,
+                "y": 101,
+                "anchor": "c"
+              }
+            }
+          },
+          "active": {
+            "control": {
+              "background": "gold"
+            },
+            "overlay": {
+              "state": "normal"
+            }
+          },
+          "inactive": {
+            "control": {
+              "background": "#ffffff"
+            },
+            "overlay": {
+              "state": "hidden"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "possession",
+      "type": "enumeration",
+      "enums": [
+        {
+          "name": "home-poss",
+          "default-active": false,
+          "control": {
+            "display": {
+              "width": 50,
+              "height": 50,
+              "background": "#ffffff",
+              "label": "POSS\n",
+              "font": {
+                "family": "times",
+                "size": 16
+              },
+              "position": {
+                "x": 245,
+                "y": 275,
+                "anchor": "c"
+              }
+            }
+          },
+          "overlay": {
+            "display": {
+              "width": 45,
+              "height": 4,
               "background": "gold",
               "position": {
-                "x": 118,
-                "y": 10,
-                "anchor": "nw"
+                "x": 720,
+                "y": 59,
+                "anchor": "n"
               }
+            }
+          },
+          "active": {
+            "control": {
+              "label": "POSS\n   -->"
+            },
+            "overlay": {
+              "state": "normal"
+            }
+          },
+          "inactive": {
+            "control": {
+              "label": "POSS\n"
+            },
+            "overlay": {
+              "state": "hidden"
+            }
+          }
+        },
+        {
+          "name": "away-poss",
+          "default-active": false,
+          "control": {
+            "display": {
+              "width": 50,
+              "height": 50,
+              "background": "#ffffff",
+              "label": "POSS\n",
+              "font": {
+                "family": "times",
+                "size": 16
+              },
+              "position": {
+                "x": 155,
+                "y": 275,
+                "anchor": "c"
+              }
+            }
+          },
+          "overlay": {
+            "display": {
+              "width": 45,
+              "height": 4,
+              "background": "gold",
+              "position": {
+                "x": 475,
+                "y": 59,
+                "anchor": "n"
+              }
+            }
+          },
+          "active": {
+            "control": {
+              "label": "POSS\n<--"
+            },
+            "overlay": {
+              "state": "normal"
+            }
+          },
+          "inactive": {
+            "control": {
+              "label": "POSS\n"
+            },
+            "overlay": {
+              "state": "hidden"
             }
           }
         }

@@ -8,11 +8,11 @@ EXPIRED_BINDING = "<<expired>>"
 
 
 class ClockElement(text_element.TextElement):
-    countdown = True
     default: float
 
     def __init__(self, control_canvas, overlay_canvas, data: dict):
         super().__init__(control_canvas, overlay_canvas, data)
+        self.countdown = True
         self._start = 0.0
         self._starting_time = self.default
         self._elapsed_time = 0.0
