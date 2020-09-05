@@ -32,11 +32,11 @@ class _Enum(element.Element):
 
         self.control_element_background, self.control_element_foreground = self.render_element(
             self.control_data.get("display"),
-            self.control_canvas)
+            self.control_window)
 
         self.overlay_element_background, self.overlay_element_foreground = self.render_element(
             self.overlay_data.get("display"),
-            self.overlay_canvas)
+            self.overlay_window)
 
         self.set_click_bindings(self.control_element_background, self.control_element_foreground)
 
@@ -63,9 +63,10 @@ class _Enum(element.Element):
         self.control_canvas.itemconfigure(self.control_element_background, **args[0])
         self.control_canvas.itemconfigure(self.control_element_foreground, **args[1])
 
-    def render_element(self, data: dict, canvas: tkinter.Canvas) -> (str, str):
+    def render_element(self, data: dict, window) -> (str, str):
         if data is None:
             return
+        canvas = window.canvas
         width, height = parse.parse_geometry(data)
         background = canvas.create_rectangle(
             self.create_bbox(data.get("position"), width, height),
@@ -77,7 +78,7 @@ class _Enum(element.Element):
             anchor=parse.parse_anchor(data["position"]),
             text=parse.get_label(data),
             fill=parse.parse_foreground(data),
-            font=parse.parse_font(data)
+            font=window.get_font(data.get("font", {}))
         )
 
         return background, foreground
