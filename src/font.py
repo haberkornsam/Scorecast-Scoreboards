@@ -30,13 +30,6 @@ class Font:
             }
 
     def get_font(self) -> (str, int, str):
-        print(
-            (
-                self.family if self.family else constants.FONT_FAMILY,
-                self.size if self.size else constants.FONT_SIZE,
-                " ".join(self._get_mods())
-            )
-        )
         return (
             self.family if self.family else constants.FONT_FAMILY,
             self.size if self.size else constants.FONT_SIZE,
