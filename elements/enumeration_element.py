@@ -1,10 +1,9 @@
 import tkinter
 
-import control_window
-import overlay_window
 import parse
 from constants import BACKGROUND_ARG_MAP, FOREGROUND_ARG_MAP
 from elements import element
+from src import font
 
 
 class EnumerationElement:
@@ -30,13 +29,18 @@ class _Enum(element.Element):
         super().__init__(control_interface, overlay_interface, data)
         self.parent = parent_element
 
+        self.control_font = font.Font(self.control_data.get("display", {}).get("font", {}),
+                                      self.control_window.default_font)
+        self.overlay_font = font.Font(self.overlay_data.get("display", {}).get("font", {}),
+                                      self.overlay_window.default_font)
+
         self.control_element_background, self.control_element_foreground = self.render_element(
             self.control_data.get("display"),
-            self.control_window)
+            self.control_window, self.control_font)
 
         self.overlay_element_background, self.overlay_element_foreground = self.render_element(
             self.overlay_data.get("display"),
-            self.overlay_window)
+            self.overlay_window, self.overlay_font)
 
         self.set_click_bindings(self.control_element_background, self.control_element_foreground)
 
@@ -63,7 +67,7 @@ class _Enum(element.Element):
         self.control_canvas.itemconfigure(self.control_element_background, **args[0])
         self.control_canvas.itemconfigure(self.control_element_foreground, **args[1])
 
-    def render_element(self, data: dict, window) -> (str, str):
+    def render_element(self, data: dict, window, target_font: font.Font = None) -> (str, str):
         if data is None:
             return
         canvas = window.canvas
@@ -78,7 +82,7 @@ class _Enum(element.Element):
             anchor=parse.parse_anchor(data["position"]),
             text=parse.get_label(data),
             fill=parse.parse_foreground(data),
-            font=window.get_font(data.get("font", {}))
+            font=target_font.get_font() if target_font else font.Font({}).get_font()
         )
 
         return background, foreground

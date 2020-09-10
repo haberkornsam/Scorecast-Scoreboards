@@ -2,6 +2,7 @@ import tkinter
 
 import parse
 from elements import element
+from src import font
 
 
 class TextElement(element.Element):
@@ -19,18 +20,27 @@ class TextElement(element.Element):
         self.text_var.trace_variable("w", self.text_var_listener)
         self.control_label = parse.get_label(self.control_data.get("display", {})) or self.control_label
 
+        self.control_font = font.Font(self.control_data.get("display", {}).get("font", {}), self.control_window.default_font)
+        self.overlay_font = font.Font(self.overlay_data.get("display", {}).get("font", {}), self.overlay_window.default_font)
+
         self.control_element_background, self.control_element_foreground = self.render_element(
             self.control_data.get("display", {}),
-            self.control_window, self.control_label)
+            self.control_window, self.control_font, self.control_label)
 
         self.overlay_label = parse.get_label(self.overlay_data.get("display", {})) or self.overlay_label
         self.overlay_element_background, self.overlay_element_foreground = self.render_element(
             self.overlay_data.get("display", {}),
-            self.overlay_window, self.overlay_label)
+            self.overlay_window, self.overlay_font, self.overlay_label)
 
         self.set_click_bindings()
 
-    def render_element(self, data: dict, window, label=None, **additional_args) -> (str, str):
+    def render_element(
+            self, data: dict,
+            window, target_font: font.Font = None,
+            label=None,
+            **additional_args
+    ) -> (str, str):
+
         canvas = window.canvas
         if data is None or data == {}:
             return "", ""
@@ -50,7 +60,7 @@ class TextElement(element.Element):
             anchor=parse.parse_anchor(data["position"]),
             text=text,
             fill=parse.parse_foreground(data),
-            font=window.get_font(data.get("font", {})),
+            font=target_font.get_font() if target_font else font.Font({}).get_font(),
             **additional_args
         )
 
