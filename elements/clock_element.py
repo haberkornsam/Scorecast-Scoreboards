@@ -68,9 +68,7 @@ class ClockElement(text_element.TextElement):
             self._starting_time = float(text)
         elif re.fullmatch("^[0-9]*:[0-9]{2}([.][0-9]*$|$)", text):
             temp = text.split(":")
-            print(temp)
             self._starting_time = (float(temp[0]) * 60) + float(temp[1])
-            print(self._starting_time)
         else:
             return
         self._elapsed_time = 0.0
