@@ -1,7 +1,7 @@
 {
   "control": {
     "width": 400,
-    "height": 310,
+    "height": 247,
     "background": "#000000",
     "title": "Wrestling Scoreboard Controller",
     "font": {
@@ -74,7 +74,7 @@
             "size": 17
           },
           "position": {
-            "x": 230.5,
+            "x": 342.5,
             "y": 750,
             "anchor": "c",
             "text-offset": {
@@ -112,7 +112,7 @@
             "size": 11
           },
           "position": {
-            "x": 230,
+            "x": 342.5,
             "y": 740,
             "anchor": "c"
           }
@@ -148,7 +148,7 @@
             "size": 20
           },
           "position": {
-            "x": 253,
+            "x": 365,
             "y":750,
             "anchor": "w",
             "text-offset": {
@@ -242,7 +242,7 @@
             "size": 25
           },
           "position": {
-            "x": 475,
+            "x": 587.5,
             "y": 750,
             "anchor": "c"
           }
@@ -270,6 +270,7 @@
         }
       }
     },
+
     {
       "name": "period",
       "type": "text",
@@ -299,7 +300,7 @@
             "size": 22
           },
           "position": {
-            "x": 528,
+            "x": 640,
             "y": 750,
             "anchor": "c"
           }
@@ -349,7 +350,7 @@
             "size": 22
           },
           "position": {
-            "x": 588,
+            "x": 700,
             "y": 750,
             "anchor": "c"
           }
@@ -402,7 +403,7 @@
             "size": 22
           },
           "position": {
-            "x": 668,
+            "x": 780,
             "y": 750,
             "anchor": "c"
 
@@ -410,7 +411,6 @@
         }
       }
     },
-
 
     {
       "name": "home-game-score",
@@ -470,7 +470,7 @@
             "size": 17
           },
           "position": {
-            "x": 985,
+            "x": 1097.5,
             "y": 750,
             "anchor": "c",
             "text-offset": {
@@ -508,7 +508,7 @@
             "size": 11
           },
           "position": {
-            "x": 985.5,
+            "x": 1097.5,
             "y": 740,
             "anchor": "c"
           }
@@ -544,7 +544,7 @@
             "size": 20
           },
           "position": {
-            "x": 762,
+            "x": 875,
             "y":750,
             "anchor": "w",
             "text-offset": {
@@ -638,7 +638,7 @@
             "size": 25
           },
           "position": {
-            "x": 740,
+            "x": 852.5,
             "y": 750,
             "anchor": "c"
           }
@@ -646,9 +646,9 @@
       }
     },
     {
-      "name": "away-score-static",
+      "name": "home-score-static",
       "type": "text",
-      "default": "AWAY SCORE",
+      "default": "HOME SCORE",
       "control": {
         "display": {
           "width": 100,
